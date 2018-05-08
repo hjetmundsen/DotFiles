@@ -25,6 +25,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'itchyny/lightline.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'arcticicestudio/nord-vim'
 
 " stop - all plugins above
 call vundle#end()
@@ -38,11 +39,11 @@ map <C-l> :tabn<CR>
 map <C-h> :tabp<CR>
 
 " set color
-colorscheme onedark 
+ colorscheme nord 
 
 " set lightline color
 let g:lightline = {
-  \ 'colorscheme': 'onedark',
+  \ 'colorscheme': 'nord',
   \ }
 
 " === General Settings ===
@@ -54,5 +55,6 @@ set incsearch
 set hlsearch
 set expandtab
 set tabstop=2
+set shiftwidth=2
 
 syntax on
