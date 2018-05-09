@@ -3,6 +3,12 @@
 set laststatus=2
 set timeoutlen=1000 ttimeoutlen=0
 
+" Set leader
+:let mapleader=" "
+
+" key mappings
+:nmap ; :
+
 " no vi compat
 set nocompatible
 
@@ -34,16 +40,24 @@ call vundle#end()
 filetype plugin indent on
 
 " NERDTree shortcut
-map <C-n> :NERDTreeToggle<CR>
+map <Leader>n :NERDTreeToggle<CR>
+
+" Switch between tabs
 map <C-l> :tabn<CR>
 map <C-h> :tabp<CR>
 
+" Switch between windows
+nmap <silent> <Leader>k :wincmd k<CR>
+nmap <silent> <Leader>j :wincmd j<CR>
+nmap <silent> <Leader>h :wincmd h<CR>
+nmap <silent> <Leader>l :wincmd l<CR>
+
 " set color
- colorscheme nord 
+ colorscheme Tomorrow-Night-Eighties 
 
 " set lightline color
 let g:lightline = {
-  \ 'colorscheme': 'nord',
+  \ 'colorscheme': 'nord'
   \ }
 
 " === General Settings ===
