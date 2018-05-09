@@ -55,9 +55,7 @@ nmap <silent> <Leader>l :wincmd l<CR>
  colorscheme gruvbox
 
 " set lightline color
-let g:lightline = {
-  \ 'colorscheme': 'gruvbox'
-  \ }
+let g:lightline = {'colorscheme': 'gruvbox'}
 
 " === General Settings ===
 set backspace=indent,eol,start
