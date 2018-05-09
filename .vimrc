@@ -31,7 +31,6 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'itchyny/lightline.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'arcticicestudio/nord-vim'
 
 " stop - all plugins above
 call vundle#end()
@@ -53,11 +52,11 @@ nmap <silent> <Leader>h :wincmd h<CR>
 nmap <silent> <Leader>l :wincmd l<CR>
 
 " set color
- colorscheme Tomorrow-Night-Eighties 
+ colorscheme gruvbox
 
 " set lightline color
 let g:lightline = {
-  \ 'colorscheme': 'nord'
+  \ 'colorscheme': 'gruvbox'
   \ }
 
 " === General Settings ===
