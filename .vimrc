@@ -6,24 +6,22 @@ set ttimeoutlen=0
 
 " === MAPPINGS ===
 
-" Set leader
+" Leader
 :let mapleader=" "
 
-" key mappings
+" Single Keys
 :nmap ; :
 
 " === PLUGINS ===
 
-" initialize vundle
+" Initialize Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
-" start - all plugins below
 
-" Let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" Utility
+" Plugin List
 Plugin 'airblade/vim-gitgutter'
 Plugin 'alvan/vim-closetag'
 Plugin 'itchyny/lightline.vim'
@@ -33,7 +31,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
 
-" stop - all plugins above
 call vundle#end()
 
 " === SHORTCUTS ===
@@ -41,11 +38,11 @@ call vundle#end()
 " Toggle NERDTree
 map <Leader>n :NERDTreeToggle<CR>
 
-" Switch between tabs
+" Tab Switching
 map <C-l> :tabn<CR>
 map <C-h> :tabp<CR>
 
-" Switch between windows
+" Window Switching
 nmap <silent> <Leader>k :wincmd k<CR>
 nmap <silent> <Leader>j :wincmd j<CR>
 nmap <silent> <Leader>h :wincmd h<CR>
@@ -82,4 +79,5 @@ let delimitMate_expand_cr = 1
 " Filetype
 filetype plugin indent on
 
+" Syntax
 syntax on
