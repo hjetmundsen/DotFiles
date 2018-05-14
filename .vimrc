@@ -1,7 +1,10 @@
 " ~/.vimrc
 
 set laststatus=2
-set timeoutlen=1000 ttimeoutlen=0
+set timeoutlen=1000
+set ttimeoutlen=0
+
+" === MAPPINGS ===
 
 " Set leader
 :let mapleader=" "
@@ -9,11 +12,7 @@ set timeoutlen=1000 ttimeoutlen=0
 " key mappings
 :nmap ; :
 
-" no vi compat
-set nocompatible
-
-" filetype func off
-filetype off
+" === PLUGINS ===
 
 " initialize vundle
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -25,20 +24,21 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Utility
+Plugin 'airblade/vim-gitgutter'
+Plugin 'alvan/vim-closetag'
+Plugin 'itchyny/lightline.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'raimondi/delimitmate'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
-Plugin 'itchyny/lightline.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'airblade/vim-gitgutter'
 
 " stop - all plugins above
 call vundle#end()
 
-" filetype func on
-filetype plugin indent on
+" === SHORTCUTS ===
 
-" NERDTree shortcut
+" Toggle NERDTree
 map <Leader>n :NERDTreeToggle<CR>
 
 " Switch between tabs
@@ -50,14 +50,11 @@ nmap <silent> <Leader>k :wincmd k<CR>
 nmap <silent> <Leader>j :wincmd j<CR>
 nmap <silent> <Leader>h :wincmd h<CR>
 nmap <silent> <Leader>l :wincmd l<CR>
+nmap <silent> <Leader>x :wincmd x<CR>
 
-" set color
- colorscheme gruvbox
+" === SETTINGS ===
 
-" set lightline color
-let g:lightline = {'colorscheme': 'gruvbox'}
-
-" === General Settings ===
+" General
 set backspace=indent,eol,start
 set ruler
 set number
@@ -67,5 +64,22 @@ set hlsearch
 set expandtab
 set tabstop=2
 set shiftwidth=2
+
+" Color
+set background=dark
+colorscheme gruvbox
+
+" Lightline
+let g:lightline = {'colorscheme': 'gruvbox'}
+
+" Closetag
+let g:closetag_filenames = '*.html, *.html.erb'
+
+" Delimitmate
+let delimitMate_matchpairs = "(:),[:],{:}"
+let delimitMate_expand_cr = 1
+
+" Filetype
+filetype plugin indent on
 
 syntax on
