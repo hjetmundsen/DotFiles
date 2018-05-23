@@ -38,18 +38,18 @@ call vundle#end()
 " === SHORTCUTS ===
 
 " Toggle NERDTree
-map <Leader>n :NERDTreeToggle<CR>
+map <Leader>n ;NERDTreeToggle<CR>
 
 " Tab Switching
-map <C-l> :tabn<CR>
-map <C-h> :tabp<CR>
+map <C-l> ;tabn<CR>
+map <C-h> ;tabp<CR>
 
 " Window Switching
-nmap <silent> <Leader>k :wincmd k<CR>
-nmap <silent> <Leader>j :wincmd j<CR>
-nmap <silent> <Leader>h :wincmd h<CR>
-nmap <silent> <Leader>l :wincmd l<CR>
-nmap <silent> <Leader>x :wincmd x<CR>
+nmap <silent> <Leader>k ;wincmd k<CR>
+nmap <silent> <Leader>j ;wincmd j<CR>
+nmap <silent> <Leader>h ;wincmd h<CR>
+nmap <silent> <Leader>l ;wincmd l<CR>
+nmap <silent> <Leader>x ;wincmd x<CR>
 
 " Page up and down
 nmap <silent> <Leader>f <C-f><CR>
