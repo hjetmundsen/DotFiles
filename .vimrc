@@ -10,7 +10,8 @@ set ttimeoutlen=0
 :let mapleader=" "
 
 " Single Keys
-:nmap ; :
+:noremap ; :
+:noremap : ;
 
 " === PLUGINS ===
 
@@ -27,6 +28,7 @@ Plugin 'alvan/vim-closetag'
 Plugin 'itchyny/lightline.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'raimondi/delimitmate'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
@@ -49,6 +51,10 @@ nmap <silent> <Leader>h :wincmd h<CR>
 nmap <silent> <Leader>l :wincmd l<CR>
 nmap <silent> <Leader>x :wincmd x<CR>
 
+" Page up and down
+nmap <silent> <Leader>f <C-f><CR>
+nmap <silent> <Leader>b <C-b><CR>
+
 " === SETTINGS ===
 
 " General
@@ -57,7 +63,7 @@ set ruler
 set number
 set showcmd
 set incsearch
-set hlsearch
+set nohlsearch
 set expandtab
 set tabstop=2
 set shiftwidth=2
