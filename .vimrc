@@ -30,7 +30,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'raimondi/delimitmate'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 
 call vundle#end()
@@ -51,16 +51,18 @@ nmap <silent> <Leader>h ;wincmd h<CR>
 nmap <silent> <Leader>l ;wincmd l<CR>
 nmap <silent> <Leader>x ;wincmd x<CR>
 
-" Page up and down
+" Page movement
 nmap <silent> <Leader>f <C-f><CR>
 nmap <silent> <Leader>b <C-b><CR>
+nmap <silent> <Leader>d <C-d><CR>
+nmap <silent> <Leader>u <C-u><CR>
 
 " === SETTINGS ===
 
 " General
 set backspace=indent,eol,start
 set ruler
-set number
+set number relativenumber
 set showcmd
 set incsearch
 set nohlsearch
