@@ -12,7 +12,6 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 fpath=($fpath)
 
 # Aliases
-alias python='python3'
 alias brewup='brew update && brew upgrade && brew cleanup &&  brew prune && brew doctor'
 
 # Rbenv initialize

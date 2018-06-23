@@ -31,7 +31,6 @@ Plugin 'raimondi/delimitmate'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-fugitive'
 
 call vundle#end()
 
@@ -61,7 +60,6 @@ nmap <silent> <Leader>u <C-u><CR>
 
 " General
 set backspace=indent,eol,start
-set ruler
 set number relativenumber
 set showcmd
 set incsearch
