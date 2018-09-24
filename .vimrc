@@ -25,6 +25,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugin List
 Plugin 'airblade/vim-gitgutter'
 Plugin 'alvan/vim-closetag'
+Plugin 'dikiaap/minimalist'
 Plugin 'itchyny/lightline.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'raimondi/delimitmate'
@@ -73,9 +74,9 @@ set background=dark
 colorscheme gruvbox
 
 " Lightline
+set noshowmode
 let g:lightline = {'colorscheme': 'gruvbox'}
 
-" Closetag
 let g:closetag_filenames = '*.html, *.html.erb'
 
 " Delimitmate
