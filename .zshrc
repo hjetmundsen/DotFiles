@@ -2,8 +2,6 @@
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
-export TERM=xterm-256color
-
 # Prompt
 PS1="%2~ > "
 
@@ -11,7 +9,6 @@ PS1="%2~ > "
 autoload -U compinit
 compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-fpath=($fpath)
 
 # Aliases
 alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
