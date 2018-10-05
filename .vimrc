@@ -25,7 +25,6 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugin List
 Plugin 'airblade/vim-gitgutter'
 Plugin 'alvan/vim-closetag'
-Plugin 'itchyny/lightline.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'morhetz/gruvbox'
 Plugin 'raimondi/delimitmate'
@@ -75,7 +74,6 @@ colorscheme gruvbox
 
 " Lightline
 set noshowmode
-let g:lightline = {'colorscheme': 'gruvbox'}
 
 let g:closetag_filenames = '*.html, *.html.erb'
 
@@ -88,3 +86,20 @@ filetype plugin indent on
 
 " Syntax
 syntax on
+
+hi vertsplit ctermfg=238 ctermbg=235
+hi LineNr ctermfg=237
+hi StatusLine ctermfg=235 ctermbg=245
+hi StatusLineNC ctermfg=235 ctermbg=237
+hi Search ctermbg=58 ctermfg=15
+hi Default ctermfg=1
+hi clear SignColumn
+hi SignColumn ctermbg=235
+hi GitGutterAdd ctermbg=235 ctermfg=245
+hi GitGutterChange ctermbg=235 ctermfg=245
+hi GitGutterDelete ctermbg=235 ctermfg=245
+hi GitGutterChangeDelete ctermbg=235 ctermfg=245
+hi EndOfBuffer ctermfg=237 ctermbg=235
+
+set statusline=%=%P\ %f\ %m
+set fillchars=vert:\ ,stl:\ ,stlnc:\
