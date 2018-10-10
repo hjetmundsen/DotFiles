@@ -30,6 +30,7 @@ Plugin 'morhetz/gruvbox'
 Plugin 'raimondi/delimitmate'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
+Plugin 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plugin 'tpope/vim-surround'
 
 call vundle#end()
@@ -65,8 +66,11 @@ set showcmd
 set incsearch
 set nohlsearch
 set expandtab
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
+
+" Deoplete
+let g:deoplete#enable_at_startup = 1
 
 " Color
 set background=dark
