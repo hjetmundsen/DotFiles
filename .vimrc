@@ -16,24 +16,21 @@ set ttimeoutlen=0
 " === PLUGINS ===
 
 " Initialize Vundle
-set rtp+=~/.vim/bundle/Vundle.vim
-
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin('~/.vim/plugged')
 
 " Plugin List
-Plugin 'airblade/vim-gitgutter'
-Plugin 'alvan/vim-closetag'
-Plugin 'kien/ctrlp.vim'
-Plugin 'morhetz/gruvbox'
-Plugin 'raimondi/delimitmate'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plugin 'tpope/vim-surround'
+Plug 'alvan/vim-closetag'
+Plug 'itchyny/lightline.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'phanviet/vim-monokai-pro'
+Plug 'raimondi/delimitmate'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'sheerun/vim-polyglot'
+Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'tpope/vim-surround'
 
-call vundle#end()
+call plug#end()
 
 " === SHORTCUTS ===
 
@@ -72,13 +69,19 @@ set shiftwidth=4
 " Deoplete
 let g:deoplete#enable_at_startup = 1
 
+" Mouse
+set mouse=a
+
 " Color
 set background=dark
-colorscheme gruvbox
+set termguicolors
+colorscheme monokai_pro
 
 " Lightline
 set noshowmode
+let g:lightline = { 'colorscheme': 'one' }
 
+" Closetag
 let g:closetag_filenames = '*.html, *.html.erb'
 
 " Delimitmate
@@ -91,19 +94,10 @@ filetype plugin indent on
 " Syntax
 syntax on
 
-hi vertsplit ctermfg=238 ctermbg=235
-hi LineNr ctermfg=237
-hi StatusLine ctermfg=235 ctermbg=245
-hi StatusLineNC ctermfg=235 ctermbg=237
-hi Search ctermbg=58 ctermfg=15
-hi Default ctermfg=1
-hi clear SignColumn
-hi SignColumn ctermbg=235
-hi GitGutterAdd ctermbg=235 ctermfg=245
-hi GitGutterChange ctermbg=235 ctermfg=245
-hi GitGutterDelete ctermbg=235 ctermfg=245
-hi GitGutterChangeDelete ctermbg=235 ctermfg=245
-hi EndOfBuffer ctermfg=237 ctermbg=235
+" Highlight
+hi LineNr guibg='#2d2a2e'
+hi EndOfBuffer ctermfg=black ctermbg=black
+
+
 
 set statusline=%=%P\ %f\ %m
-set fillchars=vert:\ ,stl:\ ,stlnc:\
