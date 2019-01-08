@@ -22,6 +22,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'alvan/vim-closetag'
 Plug 'itchyny/lightline.vim'
 Plug 'kien/ctrlp.vim'
+Plug 'morhetz/gruvbox'
 Plug 'phanviet/vim-monokai-pro'
 Plug 'raimondi/delimitmate'
 Plug 'scrooloose/nerdcommenter'
@@ -63,8 +64,9 @@ set showcmd
 set incsearch
 set nohlsearch
 set expandtab
-set tabstop=4
-set shiftwidth=4
+:set tabstop=2
+:set shiftwidth=2
+:set expandtab
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
@@ -75,11 +77,11 @@ set mouse=a
 " Color
 set background=dark
 set termguicolors
-colorscheme monokai_pro
+colorscheme gruvbox
 
 " Lightline
 set noshowmode
-let g:lightline = { 'colorscheme': 'one' }
+let g:lightline = { 'colorscheme': 'gruvbox' }
 
 " Closetag
 let g:closetag_filenames = '*.html, *.html.erb'
@@ -95,9 +97,7 @@ filetype plugin indent on
 syntax on
 
 " Highlight
-hi LineNr guibg='#2d2a2e'
-hi EndOfBuffer ctermfg=black ctermbg=black
-
-
+hi LineNr guibg=bg
+highlight EndOfBuffer guifg=bg
 
 set statusline=%=%P\ %f\ %m
