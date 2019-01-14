@@ -7,11 +7,11 @@ set ttimeoutlen=0
 " === MAPPINGS ===
 
 " Leader
-:let mapleader=" "
+let mapleader=" "
 
 " Single Keys
-:noremap ; :
-:noremap : ;
+noremap ; :
+noremap : ;
 
 " === PLUGINS ===
 
@@ -19,16 +19,11 @@ set ttimeoutlen=0
 call plug#begin('~/.vim/plugged')
 
 " Plugin List
-Plug 'alvan/vim-closetag'
-Plug 'itchyny/lightline.vim'
-Plug 'kien/ctrlp.vim'
-Plug 'morhetz/gruvbox'
-Plug 'phanviet/vim-monokai-pro'
 Plug 'raimondi/delimitmate'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
-Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 
 call plug#end()
@@ -64,27 +59,14 @@ set showcmd
 set incsearch
 set nohlsearch
 set expandtab
-:set tabstop=2
-:set shiftwidth=2
-:set expandtab
-
-" Deoplete
-let g:deoplete#enable_at_startup = 1
-
-" Mouse
-set mouse=a
+set tabstop=2
+set shiftwidth=2
+set expandtab
 
 " Color
 set background=dark
 set termguicolors
-colorscheme gruvbox
-
-" Lightline
-set noshowmode
-let g:lightline = { 'colorscheme': 'gruvbox' }
-
-" Closetag
-let g:closetag_filenames = '*.html, *.html.erb'
+colorscheme hybrid
 
 " Delimitmate
 let delimitMate_matchpairs = "(:),[:],{:}"
@@ -98,6 +80,8 @@ syntax on
 
 " Highlight
 hi LineNr guibg=bg
-highlight EndOfBuffer guifg=bg
+hi EndOfBuffer guifg=bg
+hi StatusLine guifg=bg guibg=white
 
-set statusline=%=%P\ %f\ %m
+" Statusline
+set statusline+=\ %f
