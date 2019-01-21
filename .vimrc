@@ -23,8 +23,8 @@ Plug 'raimondi/delimitmate'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
 
 call plug#end()
 
@@ -71,6 +71,9 @@ colorscheme hybrid
 " Delimitmate
 let delimitMate_matchpairs = "(:),[:],{:}"
 let delimitMate_expand_cr = 1
+
+" Deoplete
+let g:deoplete#enable_at_startup = 1
 
 " Filetype
 filetype plugin indent on

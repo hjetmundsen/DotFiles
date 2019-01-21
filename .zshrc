@@ -4,7 +4,7 @@ export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 
 # Prompt
-PS1="%2~ > "
+PS1="[jet] %2~ > "
 
 # Case insensitive auto-complete
 autoload -U compinit
@@ -16,5 +16,8 @@ alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
 alias v='nvim'
 alias clang++='clang++ -std=c++11'
 
-# N
-export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+# Z
+source "$(brew --prefix)/etc/profile.d/z.sh"
+
+# Rust
+export PATH="$HOME/.cargo/bin:$PATH"
