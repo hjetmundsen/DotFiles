@@ -1,0 +1,357 @@
+[bar/top]
+
+;------------;
+; DIMENSIONS ;
+;------------;
+
+width = 100%
+height = 20
+offset-y = 0
+offset-x = 0
+
+border-top-size = 7 
+border-bottom-size = 0
+border-right-size = 16
+border-left-size = 16
+
+;----------;
+; LOCATION ;
+;----------;
+
+bottom = false
+monitor = HDMI-0
+monitor-fallback = eDP-1-1
+wm-restack = bspwm
+override-redirect = false 
+
+;-------;
+; FONTS ;
+;-------;
+
+font-0 = "FuraCode Nerd Font Mono:size=10;0"
+font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=10;2"
+font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=10;2"
+font-3 = "Font Awesome 5 Brands:pixelsize=10;2"
+/*font-4 = "WenQuanYi Micro Hei Mono:size=10;0"*/
+
+;--------;
+; COLORS ;
+;--------;
+
+background = 0
+foreground = #fbf1c7
+border-color = 0
+
+;---------------;
+; MISCELLANEOUS ;
+;---------------;
+
+fixed-center = true
+padding-left = 2 
+padding-right = 2
+module-margin = 1.5
+
+modules-left = bspwm
+modules-center = date time 
+modules-right = wlan cpu memory temperature network
+
+[bar/bottom]
+;------------;
+; DIMENSIONS ;
+;------------;
+
+width = 100%
+height = 20
+offset-y = 0
+offset-x = 0
+
+border-top-size = 0
+border-bottom-size = 3
+border-right-size = 16
+border-left-size = 16
+
+;----------;
+; LOCATION ;
+;----------;
+
+bottom = true
+monitor = HDMI-0
+monitor-fallback = eDP-1-1
+wm-restack = i3
+override-redirect = true
+
+;-------;
+; FONTS ;
+;-------;
+
+font-0 = "Font Awesome 5 Free:style=Solid:pixelsize=10;0"
+font-1 = "Font Awesome 5 Free:style=Regular:pixelsize=10;0"
+font-2 = "Font Awesome 5 Brands:pixelsize=10;0"
+font-3 = "FuraCode Nerd Font Mono:size=10;0"
+font-4 = "WenQuanYi Micro Hei Mono:size=10;0"
+
+;--------;
+; COLORS ;
+;--------;
+
+background = 0
+foreground = #fbf1c7
+border-color = 0
+
+;---------------;
+; MISCELLANEOUS ;
+;---------------;
+
+fixed-center = true
+padding-left = 2 
+padding-right = 2
+module-margin = 1.5
+
+modules-left = mpd 
+modules-center = bspwm
+;modules-right = 
+
+tray-position = right
+tray-detached = false 
+tray-padding = 2
+tray-offset-x = -16
+
+[bar/top_secondary]
+
+;------------;
+; DIMENSIONS ;
+;------------;
+
+width = 100%
+height = 20
+offset-y = 0
+offset-x = 0
+
+border-top-size = 7 
+border-bottom-size = 0
+border-right-size = 16
+border-left-size = 16
+
+;----------;
+; LOCATION ;
+;----------;
+
+bottom = false
+monitor = HDMI-0
+wm-restack = bspwm
+override-redirect = true 
+
+;-------;
+; FONTS ;
+;-------;
+
+font-0 = "FuraCode Nerd Font Mono:size=10;0"
+font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=10;2"
+font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=10;2"
+font-3 = "Font Awesome 5 Brands:pixelsize=10;2"
+font-4 = "WenQuanYi Micro Hei Mono:size=10;0"
+
+;--------;
+; COLORS ;
+;--------;
+
+background = 0
+foreground = #fbf1c7
+border-color = 0
+
+;---------------;
+; MISCELLANEOUS ;
+;---------------;
+
+fixed-center = true
+padding-left = 2 
+padding-right = 2
+module-margin = 1.5
+
+;modules-center =
+;modules-right =
+
+[bar/bottom_secondary]
+;------------;
+; DIMENSIONS ;
+;------------;
+
+width = 100%
+height = 20
+offset-y = 0
+offset-x = 0
+
+border-top-size = 0
+border-bottom-size = 3 
+border-right-size = 10
+border-left-size = 10
+
+;----------;
+; LOCATION ;
+;----------;
+
+bottom = true
+monitor = eDP-1-1 
+wm-restack = bspwm
+override-redirect = true
+
+;-------;
+; FONTS ;
+;-------;
+
+font-0 = "FuraCode Nerd Font Mono:size=10;0"
+font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=10;2"
+font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=10;2"
+font-3 = "Font Awesome 5 Brands:pixelsize=10;2"
+font-4 = "WenQuanYi Micro Hei Mono:size=10;0"
+
+;--------;
+; COLORS ;
+;--------;
+
+background = 0
+foreground = #fbf1c7
+border-color = 0
+
+;---------------;
+; MISCELLANEOUS ;
+;---------------;
+
+fixed-center = true
+padding-left = 2 
+padding-right = 2
+module-margin = 1.5
+
+;modules-left = i3 
+modules-center = i3
+;modules-right = 
+
+
+;---------;
+; MODULES ;
+;---------;
+
+[module/bspwm]
+type = internal/bspwm
+
+pin-workspaces = true
+strip-wsnumbers = true
+enable-scroll = false
+
+label-unfocused-foreground = #bdae93
+label-focused-foreground = #fbf1c7
+label-urgent-foreground = #cc241d
+
+[module/time]
+type = internal/date
+
+interval = 1.0
+
+date =  %H:%M
+
+[module/date]
+type = internal/date
+date =  %Y-%m-%d% 
+label = %date%
+
+[module/battery]
+type = internal/battery
+
+battery = BAT0
+
+poll-interval = 1
+
+full-at = 95
+
+label-discharging = %percentage%%
+label-charging = %percentage%%
+label-full = %percentage%%
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-full = <ramp-capacity> <label-full>
+format-charging =  <label-charging>
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+[module/volume]
+type = internal/pulseaudio
+format-volume = %{A3:exec kitty -e pulsemixer & disown:}<ramp-volume> <label-volume>%{A}
+format-muted = %{A3:exec kitty -e pulsemixer & disown:} 0%%{A}
+interval = 1
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+[module/mpd]
+type = internal/mpd
+
+label-offline = mpd is offline
+format-online = %{A3:exec kitty -e ncmpcpp & disown:}<icon-prev> <toggle> <icon-next> <bar-progress> <label-song>%{A}
+format-offline = %{A3:exec kitty -e ncmpcpp & disown:}<label-offline>%{A}
+host = 127.0.0.1
+port = 6600
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+
+label-song-maxlen = 128 
+label-song-ellipsis = true
+
+bar-progress-width = 10
+bar-progress-indicator = |
+bar-progress-fill = ─
+bar-progress-empty = ─
+
+[module/wlan]
+type = internal/network
+
+interface = wlo1
+
+interval = 5
+
+label-connected = %{A3:exec networkmanager_dmenu & disown:} %essid%%{A}
+label-disconnected = %{A3:exec networkmanager_dmenu & disown:} Not Connected%{A}
+
+[module/cpu]
+type = internal/cpu
+label = %{A3:kitty -e htop -s PERCENT_CPU & disown:} %percentage%%%{A}
+
+[module/memory]
+type = internal/memory
+label = %{A3:kitty -e htop -s PERCENT_MEM & disown:} %percentage_used%% | %percentage_swap_used%%%{A}
+
+[module/network]
+type = internal/network
+interface = wlo1
+label-connected =  %downspeed% |  %upspeed%
+
+[module/temperature]
+type = internal/temperature
+warn-temperature = 60
+label = %{A3:kitty -e watch sensors & disown:} %temperature-c%%{A}
+label-warn = %{A3:kitty -e watch sensors & disown:} %temperature-c%%{A}
+label-warn-foreground = #dc322f
+
+[module/filesystem]
+type = internal/fs
+mount-0 = /
+mount-1 = /home
+interval = 10
+spacing = 1
+format-mounted =  <label-mounted>
+label-mounted = %mountpoint% %percentage_used%%
+
+[module/updates]
+type = custom/script
+exec = ~/.config/polybar/scripts/updates-arch-combined.sh
+label = %{A3:exec kitty -e yay -Syu --noconfirm --answerclean None --answerdiff None --answeredit None --answerupgrade None --nocleanmenu --nodiffmenu --noeditmenu --noupgrademenu --removemake & disown:} %output%%{A}
+interval = 600
+
+
