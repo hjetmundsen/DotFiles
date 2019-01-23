@@ -19,12 +19,14 @@ noremap : ;
 call plug#begin('~/.vim/plugged')
 
 " Plugin List
+Plug 'morhetz/gruvbox'
+Plug 'phanviet/vim-monokai-pro'
 Plug 'raimondi/delimitmate'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 
 call plug#end()
 
@@ -66,14 +68,11 @@ set expandtab
 " Color
 set background=dark
 set termguicolors
-colorscheme hybrid
+colorscheme monokai_pro
 
 " Delimitmate
 let delimitMate_matchpairs = "(:),[:],{:}"
 let delimitMate_expand_cr = 1
-
-" Deoplete
-let g:deoplete#enable_at_startup = 1
 
 " Filetype
 filetype plugin indent on
@@ -84,7 +83,7 @@ syntax on
 " Highlight
 hi LineNr guibg=bg
 hi EndOfBuffer guifg=bg
-hi StatusLine guifg=bg guibg=white
+hi StatusLine guifg=white guibg=bg
 
 " Statusline
 set statusline+=\ %f
