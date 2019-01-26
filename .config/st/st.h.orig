@@ -134,7 +134,6 @@ extern char *worddelimiters;
 extern int allowaltscreen;
 extern char *termname;
 extern unsigned int tabspaces;
-extern unsigned int alpha;
 extern unsigned int defaultfg;
 extern unsigned int defaultbg;
 extern MouseKey mkeys[];
