@@ -15,3 +15,5 @@ alias clang++='clang++ -std=c++11'
 alias g++='g++ -std=c++11'
 alias ls='ls --color=auto'
 alias c='clear'
+
+source /usr/share/z/z.sh

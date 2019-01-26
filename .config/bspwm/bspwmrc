@@ -2,7 +2,7 @@
 
 sxhkd &
 
-bspc monitor -d I II III IV V VI VII VIII IX X
+bspc monitor -d term web music chat 4 5
 
 bspc config border_width         2
 bspc config window_gap          12
