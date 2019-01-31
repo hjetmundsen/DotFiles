@@ -1,15 +1,30 @@
 # DotFiles
 A repo to store any important dotfiles
 
-To get vimrc working you need to install Vundle. To do this just follow the steps below.
+To get vimrc working you need to install Vim Plug. The instructions to install can be found at the offical repository.
 
-1. Type in terminal "git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim"
-2. Type in terminal "vim +PluginInstall +qall" to install all of the plugins mentioned in the vimrc
+https://github.com/junegunn/vim-plug
 
-You should be good to go after that with the Vundle plugin manager installed as well as the plugins. For future reference on using Vundle in case you aren't familiar, just check out the github page in the link below.
+After Installation run "nvim +PlugInstall +qall" to install dependencies
 
-https://github.com/VundleVim/Vundle.vim
+If you are using neovim then you should also install pynvim with pip3 to get
+deoplete working
+
+You MUST be using a terminal with true color support for my color settings
+to display properly
 
 ----------------------------------------
 
-I also made some useful shortcuts in my vimrc file. Ctrl-n will toggle the NERDTree view for your current directory. Ctrl-h and Ctrl-l will move left and right between vim tabs respectively.
+Important vimrc changes
+-----------------------
+- Mapped Leader to Spacebar
+- Leader-n will open NerdTree
+- Leader-hjkl will move between open windows
+- Leader-c-Leader will comment and uncomment lines
+- Ctrl-hjkl will move between tabs
+- Semicolon and Colon are swapped in normal mode
+- Leader-f moves forward a page
+- Leader-b moves back a page
+- Leader-d moves down half a page
+- Leader-u moves up half a page
+- Leader-x swaps the current window with the window on the right
