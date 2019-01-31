@@ -19,7 +19,6 @@ noremap : ;
 call plug#begin('~/.vim/plugged')
 
 " Plugin List
-Plug 'morhetz/gruvbox'
 Plug 'phanviet/vim-monokai-pro'
 Plug 'raimondi/delimitmate'
 Plug 'scrooloose/nerdcommenter'
