@@ -1,7 +1,5 @@
 " ~/.vimrc
 
-set laststatus=2
-set timeoutlen=1000
 set ttimeoutlen=0
 
 " === MAPPINGS ===
@@ -15,7 +13,7 @@ noremap : ;
 
 " === PLUGINS ===
 
-" Initialize Vundle
+" Initialize Vim Plug
 call plug#begin('~/.vim/plugged')
 
 " Plugin List
@@ -24,8 +22,8 @@ Plug 'raimondi/delimitmate'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
 
 call plug#end()
 
@@ -55,14 +53,16 @@ nmap <silent> <Leader>u <C-u><CR>
 
 " General
 set backspace=indent,eol,start
-set number relativenumber
-set showcmd
+set expandtab
 set incsearch
+set mouse=a
 set nohlsearch
-set expandtab
-set tabstop=2
+set number relativenumber
 set shiftwidth=2
-set expandtab
+set showcmd
+set splitbelow
+set splitright
+set tabstop=2
 
 " Color
 set background=dark
@@ -73,6 +73,9 @@ colorscheme monokai_pro
 let delimitMate_matchpairs = "(:),[:],{:}"
 let delimitMate_expand_cr = 1
 
+" Deoplete
+let g:deoplete#enable_at_startup = 1
+
 " Filetype
 filetype plugin indent on
 
@@ -82,7 +85,8 @@ syntax on
 " Highlight
 hi LineNr guibg=bg
 hi EndOfBuffer guifg=bg
-hi StatusLine guifg=white guibg=bg
+hi StatusLine guibg=bg guifg=white
+"hi StatusLineNC guibg=bg guifg=white
 
 " Statusline
 set statusline+=\ %f
