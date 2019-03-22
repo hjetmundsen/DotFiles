@@ -63,6 +63,7 @@ set showcmd
 set splitbelow
 set splitright
 set tabstop=2
+"set colorcolumn=80
 
 " Color
 set background=dark
