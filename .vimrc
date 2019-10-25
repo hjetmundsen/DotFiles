@@ -17,6 +17,8 @@ noremap : ;
 call plug#begin('~/.vim/plugged')
 
 " Plugin List
+Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'kien/ctrlp.vim'
 Plug 'phanviet/vim-monokai-pro'
 Plug 'raimondi/delimitmate'
 Plug 'scrooloose/nerdcommenter'
@@ -49,6 +51,9 @@ nmap <silent> <Leader>b <C-b><CR>
 nmap <silent> <Leader>d <C-d><CR>
 nmap <silent> <Leader>u <C-u><CR>
 
+" CtrlP Tag Search
+nnoremap <Leader>p :CtrlPTag<cr>
+
 " === SETTINGS ===
 
 " General
@@ -64,6 +69,9 @@ set splitbelow
 set splitright
 set tabstop=2
 "set colorcolumn=80
+
+" Autotags
+let autotagTagsFile="tags"
 
 " Color
 set background=dark
