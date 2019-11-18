@@ -17,22 +17,22 @@ noremap : ;
 call plug#begin('~/.vim/plugged')
 
 " Plugin List
-Plug 'deoplete-plugins/deoplete-jedi'
-Plug 'kien/ctrlp.vim'
+"Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf.vim'
+Plug 'majutsushi/tagbar'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'phanviet/vim-monokai-pro'
 Plug 'raimondi/delimitmate'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
 " === SHORTCUTS ===
 
-" Toggle NERDTree
-map <Leader>n ;NERDTreeToggle<CR>
+" Toggle Tagbar
+map <Leader>t ;TagbarOpenAutoClose<CR>
 
 " Tab Switching
 map <C-l> ;tabn<CR>
@@ -51,8 +51,11 @@ nmap <silent> <Leader>b <C-b><CR>
 nmap <silent> <Leader>d <C-d><CR>
 nmap <silent> <Leader>u <C-u><CR>
 
-" CtrlP Tag Search
-nnoremap <Leader>p :CtrlPTag<cr>
+" FZF
+nnoremap <Leader>pf :Files<cr>
+nnoremap <Leader>pt :BTags<cr>
+nnoremap <Leader>pb :Buffers<cr>
+nnoremap <Leader>pg :Rg<cr>
 
 " === SETTINGS ===
 
@@ -70,8 +73,22 @@ set splitright
 set tabstop=2
 "set colorcolumn=80
 
-" Autotags
-let autotagTagsFile="tags"
+" Coc
+set cmdheight=2
+set updatetime=300
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Color
 set background=dark
@@ -81,9 +98,6 @@ colorscheme monokai_pro
 " Delimitmate
 let delimitMate_matchpairs = "(:),[:],{:}"
 let delimitMate_expand_cr = 1
-
-" Deoplete
-let g:deoplete#enable_at_startup = 1
 
 " Filetype
 filetype plugin indent on
@@ -99,3 +113,4 @@ hi StatusLine guibg=bg guifg=white
 
 " Statusline
 set statusline+=\ %f
+
