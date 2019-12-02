@@ -7,8 +7,8 @@ https://github.com/junegunn/vim-plug
 
 After Installation run "nvim +PlugInstall +qall" to install dependencies
 
-If you are using neovim then you should also install pynvim with pip3 to get
-deoplete working
+Some packages may not work properly if you aren't using Neovim.
+https://neovim.io/
 
 You MUST be using a terminal with true color support for my color settings
 to display properly
@@ -18,7 +18,7 @@ to display properly
 Important vimrc changes
 -----------------------
 - Mapped Leader to Spacebar
-- Leader-n will open NerdTree
+- Leader-t will open Tagbar
 - Leader-hjkl will move between open windows
 - Leader-c-Leader will comment and uncomment lines
 - Ctrl-hjkl will move between tabs
@@ -28,3 +28,12 @@ Important vimrc changes
 - Leader-d moves down half a page
 - Leader-u moves up half a page
 - Leader-x swaps the current window with the window on the right
+- Leader-pf will fuzzy file search the current working directory
+- Leader-pg will fuzzy file search a project with .git in the root folder
+- Leader-pb will fuzzy search open buffers
+- Leader-pr will run ripgrep on the current file
+
+Important tmux changes
+-----------------------
+- Mapped prefix to tilde
+- prefix-hjkl will move between panes
