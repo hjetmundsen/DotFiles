@@ -23,7 +23,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'jiangmiao/auto-pairs'
 Plug 'jparise/vim-graphql'
 Plug 'junegunn/fzf.vim'
-Plug 'lervag/vimtex'
 Plug 'majutsushi/tagbar'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'phanviet/vim-monokai-pro'
