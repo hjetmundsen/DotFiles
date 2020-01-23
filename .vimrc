@@ -21,7 +21,6 @@ call plug#begin('~/.vim/plugged')
 
 " Plugin List
 Plug 'jiangmiao/auto-pairs'
-Plug 'jparise/vim-graphql'
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -112,7 +111,6 @@ syntax on
 hi LineNr guibg=bg
 hi EndOfBuffer guifg=bg
 hi StatusLine guibg=bg guifg=white
-"hi StatusLineNC guibg=bg guifg=white
 
 " Statusline
 set statusline+=\ %f
