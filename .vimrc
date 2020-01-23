@@ -11,18 +11,22 @@ let mapleader=" "
 noremap ; :
 noremap : ;
 
+" If installed using Homebrew
+set rtp+=/usr/local/opt/fzf
+
 " === PLUGINS ===
 
 " Initialize Vim Plug
 call plug#begin('~/.vim/plugged')
 
 " Plugin List
-"Plug 'ctrlpvim/ctrlp.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'jparise/vim-graphql'
 Plug 'junegunn/fzf.vim'
+Plug 'lervag/vimtex'
 Plug 'majutsushi/tagbar'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'phanviet/vim-monokai-pro'
-Plug 'raimondi/delimitmate'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
@@ -45,17 +49,17 @@ nmap <silent> <Leader>h ;wincmd h<CR>
 nmap <silent> <Leader>l ;wincmd l<CR>
 nmap <silent> <Leader>x ;wincmd x<CR>
 
-" Page movement
-nmap <silent> <Leader>f <C-f><CR>
-nmap <silent> <Leader>b <C-b><CR>
-nmap <silent> <Leader>d <C-d><CR>
-nmap <silent> <Leader>u <C-u><CR>
-
 " FZF
 nnoremap <Leader>pf :Files<cr>
-nnoremap <Leader>pt :BTags<cr>
-nnoremap <Leader>pb :Buffers<cr>
-nnoremap <Leader>pg :Rg<cr>
+nnoremap <Leader>pg :GitFiles<cr>
+nnoremap <Leader>pt :Tags<cr>
+nnoremap <Leader>pr :Rg<cr>
+
+" Buffers
+nnoremap <Leader>bb :Buffers<cr>
+nnoremap <Leader>bn :bnext<cr>
+nnoremap <Leader>bp :bprevious<cr>
+nnoremap <Leader>bk :bdelete<cr>
 
 " === SETTINGS ===
 
@@ -113,4 +117,3 @@ hi StatusLine guibg=bg guifg=white
 
 " Statusline
 set statusline+=\ %f
-
