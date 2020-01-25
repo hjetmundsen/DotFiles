@@ -1,25 +1,23 @@
-" ~/.vimrc
+" ~/.config/nvim/init.vim
 
 set ttimeoutlen=0
 
+" Required if fzf is installed through Homebrew
+set rtp+=/usr/local/opt/fzf
+
 " === MAPPINGS ===
 
-" Leader
 let mapleader=" "
-
-" Single Keys
 noremap ; :
 noremap : ;
-
-" If installed using Homebrew
-set rtp+=/usr/local/opt/fzf
 
 " === PLUGINS ===
 
 " Initialize Vim Plug
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 " Plugin List
+Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
@@ -34,18 +32,18 @@ call plug#end()
 " === SHORTCUTS ===
 
 " Toggle Tagbar
-map <Leader>t ;TagbarOpenAutoClose<CR>
+nnoremap <Leader>t :TagbarOpenAutoClose<CR>
 
 " Tab Switching
-map <C-l> ;tabn<CR>
-map <C-h> ;tabp<CR>
+nnoremap <C-l> :tabn<CR>
+nnoremap <C-h> :tabp<CR>
 
 " Window Switching
-nmap <silent> <Leader>k ;wincmd k<CR>
-nmap <silent> <Leader>j ;wincmd j<CR>
-nmap <silent> <Leader>h ;wincmd h<CR>
-nmap <silent> <Leader>l ;wincmd l<CR>
-nmap <silent> <Leader>x ;wincmd x<CR>
+nnoremap <silent> <Leader>wk :wincmd k<CR>
+nnoremap <silent> <Leader>wj :wincmd j<CR>
+nnoremap <silent> <Leader>wh :wincmd h<CR>
+nnoremap <silent> <Leader>wl :wincmd l<CR>
+nnoremap <silent> <Leader>wx :wincmd x<CR>
 
 " FZF
 nnoremap <Leader>pf :Files<cr>
@@ -57,7 +55,10 @@ nnoremap <Leader>pr :Rg<cr>
 nnoremap <Leader>bb :Buffers<cr>
 nnoremap <Leader>bn :bnext<cr>
 nnoremap <Leader>bp :bprevious<cr>
-nnoremap <Leader>bk :bdelete<cr>
+nmap <Leader>bd <Plug>Kwbd<cr>
+
+" Fugitive
+nnoremap <Leader>gg :G<cr>
 
 " === SETTINGS ===
 
