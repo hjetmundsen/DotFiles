@@ -17,7 +17,6 @@ noremap : ;
 call plug#begin('~/.config/nvim/plugged')
 
 " Plugin List
-Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
@@ -33,17 +32,6 @@ call plug#end()
 
 " Toggle Tagbar
 nnoremap <Leader>t :TagbarOpenAutoClose<CR>
-
-" Tab Switching
-nnoremap <C-l> :tabn<CR>
-nnoremap <C-h> :tabp<CR>
-
-" Window Switching
-nnoremap <silent> <Leader>wk :wincmd k<CR>
-nnoremap <silent> <Leader>wj :wincmd j<CR>
-nnoremap <silent> <Leader>wh :wincmd h<CR>
-nnoremap <silent> <Leader>wl :wincmd l<CR>
-nnoremap <silent> <Leader>wx :wincmd x<CR>
 
 " FZF
 nnoremap <Leader>pf :Files<cr>
@@ -76,6 +64,10 @@ set splitright
 set tabstop=2
 "set colorcolumn=80
 
+" Polyglot
+let g:python_highlight_space_errors=0
+let g:python_highlight_indent_errors=0
+
 " Coc
 set cmdheight=2
 set updatetime=300
@@ -98,10 +90,6 @@ set background=dark
 set termguicolors
 colorscheme monokai_pro
 
-" Delimitmate
-let delimitMate_matchpairs = "(:),[:],{:}"
-let delimitMate_expand_cr = 1
-
 " Filetype
 filetype plugin indent on
 
@@ -109,9 +97,12 @@ filetype plugin indent on
 syntax on
 
 " Highlight
-hi LineNr guibg=bg
-hi EndOfBuffer guifg=bg
-hi StatusLine guibg=bg guifg=white
+hi LineNr guibg=None
+hi EndOfBuffer guifg=None
+hi StatusLine guibg=None guifg=white
+hi StatusLineNC guibg=None guifg=white
+hi SignColumn guibg=None
+hi VertSplit guibg=None
 
 " Statusline
 set statusline+=\ %f
