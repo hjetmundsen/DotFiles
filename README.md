@@ -23,15 +23,15 @@ Important vimrc changes
 - Leader-c-Leader will comment and uncomment lines
 - Ctrl-hjkl will move between tabs
 - Semicolon and Colon are swapped in normal mode
-- Leader-f moves forward a page
-- Leader-b moves back a page
-- Leader-d moves down half a page
-- Leader-u moves up half a page
-- Leader-x swaps the current window with the window on the right
 - Leader-pf will fuzzy file search the current working directory
 - Leader-pg will fuzzy file search a project with .git in the root folder
 - Leader-pb will fuzzy search open buffers
 - Leader-pr will run ripgrep on the current file
+- Leader-bb will list buffers
+- Leader-bn will go to next buffer
+- Leader-bp will go to previous buffer
+
+- Ctrl-jk will move up and down in the buffer and file search menus
 
 Important tmux changes
 -----------------------
