@@ -17,6 +17,8 @@ noremap : ;
 call plug#begin('~/.config/nvim/plugged')
 
 " Plugin List
+Plug 'easymotion/vim-easymotion'
+Plug 'jceb/vim-orgmode'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
@@ -53,16 +55,15 @@ nnoremap <Leader>gg :G<cr>
 " General
 set backspace=indent,eol,start
 set expandtab
-set incsearch
-set mouse=a
 set nohlsearch
+set mouse=a
+set splitbelow
 set number relativenumber
 set shiftwidth=2
-set showcmd
-set splitbelow
-set splitright
 set tabstop=2
-"set colorcolumn=80
+set noshowmode
+set ignorecase
+set smartcase
 
 " Polyglot
 let g:python_highlight_space_errors=0
