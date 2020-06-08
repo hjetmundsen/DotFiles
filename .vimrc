@@ -18,7 +18,6 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Plugin List
 Plug 'easymotion/vim-easymotion'
-Plug 'jceb/vim-orgmode'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
@@ -27,6 +26,7 @@ Plug 'phanviet/vim-monokai-pro'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 
 call plug#end()
 
@@ -40,6 +40,7 @@ nnoremap <Leader>pf :Files<cr>
 nnoremap <Leader>pg :GitFiles<cr>
 nnoremap <Leader>pt :Tags<cr>
 nnoremap <Leader>pr :Rg<cr>
+let g:fzf_preview_window=''
 
 " Buffers
 nnoremap <Leader>bb :Buffers<cr>
@@ -70,7 +71,6 @@ let g:python_highlight_space_errors=0
 let g:python_highlight_indent_errors=0
 
 " Coc
-set cmdheight=2
 set updatetime=300
 
 inoremap <silent><expr> <TAB>
@@ -99,11 +99,18 @@ syntax on
 
 " Highlight
 hi LineNr guibg=None
-hi EndOfBuffer guifg=None
+hi EndOfBuffer guifg=bg
 hi StatusLine guibg=None guifg=white
 hi StatusLineNC guibg=None guifg=white
 hi SignColumn guibg=None
 hi VertSplit guibg=None
 
 " Statusline
-set statusline+=\ %f
+set laststatus=0
+set noruler
+set noshowcmd
+
+" Minimalism
+augroup cmdline
+  autocmd CmdlineLeave : echo ''
+augroup END
