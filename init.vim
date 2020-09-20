@@ -23,6 +23,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'phanviet/vim-monokai-pro'
+Plug 'preservim/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
@@ -34,6 +35,9 @@ call plug#end()
 
 " Toggle Tagbar
 nnoremap <Leader>t :TagbarOpenAutoClose<CR>
+
+" NERDTree
+nnoremap <Leader>n :NERDTreeToggle<CR>
 
 " FZF
 nnoremap <Leader>pf :Files<cr>
@@ -106,7 +110,7 @@ hi SignColumn guibg=None
 hi VertSplit guibg=None
 
 " Statusline
-set laststatus=0
+set laststatus=2
 set noruler
 set noshowcmd
 
