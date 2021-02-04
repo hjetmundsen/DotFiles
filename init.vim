@@ -17,15 +17,18 @@ noremap : ;
 call plug#begin('~/.config/nvim/plugged')
 
 " Plugin List
+Plug 'airblade/vim-gitgutter'
 Plug 'easymotion/vim-easymotion'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neovim/nvim-lspconfig'
+"Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'phanviet/vim-monokai-pro'
 Plug 'preservim/nerdtree'
 Plug 'scrooloose/nerdcommenter'
-Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 
@@ -70,12 +73,28 @@ set noshowmode
 set ignorecase
 set smartcase
 
-" Polyglot
-let g:python_highlight_space_errors=0
-let g:python_highlight_indent_errors=0
+" Nvim LSP
+"lua << EOF 
+"require'lspconfig'.pyright.setup{on_attach=require'completion'.on_attach}
+"EOF 
+
+" Nvim Completion
+
+"Use completion-nvim in every buffer
+"autocmd BufEnter * lua require'completion'.on_attach()
+
+" Use <Tab> and <S-Tab> to navigate through popup menu
+"inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Set completeopt to have a better completion experience
+"set completeopt=menuone,noinsert,noselect
+
+" Avoid showing message extra message when using completion
+"set shortmess+=c
 
 " Coc
-set updatetime=300
+set updatetime=100
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
