@@ -14,7 +14,13 @@ return require('packer').startup(function()
 
   -- LSP and completion
   use { 'neovim/nvim-lspconfig' }
-  use { 'nvim-lua/completion-nvim' }
+  use {
+    'ms-jpq/coq_nvim',
+    branch = 'coq',
+    event = "VimEnter",
+    config = 'vim.cmd[[COQnow]]'
+  }
+  use {'ms-jpq/coq.artifacts', branch = 'artifacts'}
 
   -- Lua development
   use { 'tjdevries/nlua.nvim' }

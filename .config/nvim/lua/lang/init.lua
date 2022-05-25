@@ -1,6 +1,4 @@
 local on_attach = function(client, bufnr)
-    require('completion').on_attach()
-
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
@@ -49,7 +47,6 @@ end
 
 
 local nvim_lsp = require('lspconfig')
---require'snippets'.use_suggested_mappings(true) -- for snippets.vim
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 -- Code actions
@@ -75,7 +72,7 @@ capabilities.textDocument.codeAction = {
 capabilities.textDocument.completion.completionItem.snippetSupport = true;
 
 -- LSPs
-local servers = { "pyright", "rust_analyzer", "tsserver" }
+local servers = { "pyright", "rust_analyzer", "tsserver", "ccls" }
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup { 
         capabilities = capabilities;
