@@ -1,12 +1,6 @@
 # DotFiles
 A repo to store any important dotfiles
 
-To get vimrc working you need to install Vim Plug. The instructions to install can be found at the offical repository.
-
-https://github.com/junegunn/vim-plug
-
-After Installation run "nvim +PlugInstall +qall" to install dependencies
-
 Some packages may not work properly if you aren't using Neovim.
 https://neovim.io/
 
@@ -15,8 +9,8 @@ to display properly
 
 ----------------------------------------
 
-Important vimrc changes
------------------------
+Important nvim config changes
+-----------------------------
 - Mapped Leader to Spacebar
 - Leader-t will open Tagbar
 - Leader-hjkl will move between open windows
