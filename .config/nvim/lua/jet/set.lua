@@ -26,6 +26,6 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
-vim.opt.statusline = "%f %m"
+--vim.opt.statusline = "%f %m"
 
 vim.g.mapleader = " "

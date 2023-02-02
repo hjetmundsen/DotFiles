@@ -1,12 +1,13 @@
-function ColorMyPencils(color)
-	color = color or "gruvbox-material"
+function ColorMyPencils(color, style)
+    color = color or "sonokai"
 
-    vim.g.gruvbox_material_background = "medium"
+    if (color == "sonokai")
+    then
+        style = style or "default"
+        vim.g.sonokai_style = style
+    end
+
 	vim.cmd.colorscheme(color)
-    vim.opt.background = "dark"
-
-    vim.api.nvim_set_hl(0, "StatusLine", { bg = "none" })
-	vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
 end
 
 ColorMyPencils()

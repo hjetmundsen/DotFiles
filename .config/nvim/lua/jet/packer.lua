@@ -14,13 +14,17 @@ return require('packer').startup(function(use)
     }
 
     use({
-        'sainnhe/gruvbox-material',
+        'sainnhe/sonokai',
         config = function()
-            vim.g.gruvbox_material_background = "medium"
-            vim.cmd.colorscheme('gruvbox-material')
-            vim.opt.background = "dark"
+            vim.g.sonokai_style = 'andromeda'
+            vim.cmd.colorscheme('sonokai')
         end
     })
+
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
 
     use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
     use('nvim-treesitter/playground')
