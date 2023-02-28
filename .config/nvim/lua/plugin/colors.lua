@@ -3,7 +3,7 @@ function ColorMyPencils(color, style)
 
     if (color == "sonokai")
     then
-        style = style or "default"
+        style = style or "shusia"
         vim.g.sonokai_style = style
     end
 
