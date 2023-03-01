@@ -1,3 +1,4 @@
+require("plugin.autopairs")
 require("plugin.colors")
 require("plugin.fugitive")
 require("plugin.harpoon")
