@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
     {
         'nvim-telescope/telescope.nvim',
-        tag = '0.1.1',
+        tag = '0.1.4',
         dependencies = { { 'nvim-lua/plenary.nvim' } }
     },
     {
@@ -33,6 +33,24 @@ require('lazy').setup({
         build = ':TSUpdate'
     },
     { 'nvim-treesitter/playground' },
+    {
+        'nvim-neorg/neorg',
+        build = ':Neorg sync-parsers',
+        opts = {
+            load = {
+                ['core.defaults'] = {}, -- Loads default behaviour
+                ['core.concealer'] = {}, -- Adds pretty icons to your documents
+                ['core.dirman'] = { -- Manages Neorg workspaces
+                    config = {
+                        workspaces = {
+                            notes = '~/Documents/Notes',
+                        },
+                    },
+                },
+            },
+        },
+        dependencies = { { 'nvim-lua/plenary.nvim' } },
+    },
     { 'theprimeagen/harpoon' },
     { 'mbbill/undotree' },
     { 'tpope/vim-fugitive' },
@@ -58,10 +76,17 @@ require('lazy').setup({
             { 'rafamadriz/friendly-snippets' },
         }
     },
-    { 'preservim/nerdcommenter' },
     { 'windwp/nvim-autopairs' },
     {
         'ggandor/leap.nvim',
         dependencies = { { 'tpope/vim-repeat' } }
-    }
+    },
+    {
+    'numToStr/Comment.nvim',
+        opts = {
+            -- add any options here
+        },
+        lazy = false,
+    },
+    { 'airblade/vim-gitgutter' }
 })
