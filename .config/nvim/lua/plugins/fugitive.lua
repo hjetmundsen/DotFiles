@@ -1,8 +1,13 @@
 return {
     'tpope/vim-fugitive',
+    keys = {
+        {
+            "<leader>gs",
+            "<cmd>tab G<cr>",
+            "Open git status in new tab"
+        }
+    },
     config = function()
-        vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
-
         local jet_fugitive = vim.api.nvim_create_augroup("jet_fugitive", {})
 
         local autocmd = vim.api.nvim_create_autocmd
