@@ -1,0 +1,12 @@
+layout {
+    cwd "/Users/hjetmundsen/Repos/ml-studio"
+    default_tab_template {
+      pane borderless=true
+      pane size=1 borderless=true {
+          plugin location="compact-bar"
+      }
+    }
+    tab name="nvim"
+    tab name="rovo"
+    tab name="zsh"
+}
