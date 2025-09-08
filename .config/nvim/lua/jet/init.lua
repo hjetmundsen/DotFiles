@@ -35,6 +35,12 @@ autocmd("BufWritePre", {
     command = [[%s/\s\+$//e]],
 })
 
+autocmd({'BufReadPost', 'FileReadPost'}, {
+    group = JetGroup,
+    pattern = '*',
+    command = 'normal! zR',
+})
+
 autocmd('LspAttach', {
     group = JetGroup,
     callback = function(e)
@@ -51,6 +57,23 @@ autocmd('LspAttach', {
         vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
     end
 })
+
+-- autocmd('FileType', {
+--   group = JetGroup,
+--   callback = function()
+--     -- check if treesitter has parser
+--     if require("nvim-treesitter.parsers").has_parser() then
+-- 
+--         -- use treesitter folding
+--         vim.opt.foldmethod = "expr"
+--         vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+--     else
+-- 
+--         -- use alternative foldmethod
+--         vim.opt.foldmethod = "syntax"
+--     end
+--   end
+-- })
 
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
