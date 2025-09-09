@@ -70,7 +70,7 @@ return {
 			desc = "Delete active buffer",
 		},
 		{
-			"<leader>gg",
+			"<leader>lg",
 			function()
 				Snacks.lazygit()
 			end,
