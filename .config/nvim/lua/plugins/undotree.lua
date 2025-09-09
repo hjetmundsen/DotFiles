@@ -1,10 +1,10 @@
 return {
-    "mbbill/undotree",
-    keys = {
-        {
-            "<leader>gu",
-            "<cmd>UndotreeToggle<cr>"
-        }
-    },
-    opts = {}
+	"mbbill/undotree",
+	keys = {
+		{
+			"<leader>gu",
+			"<cmd>UndotreeToggle<cr>",
+		},
+	},
+	opts = {},
 }
