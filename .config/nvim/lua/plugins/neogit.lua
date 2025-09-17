@@ -9,7 +9,7 @@ return {
 	opts = {},
 	keys = {
 		{
-			"<leader>gg",
+			"<leader>gs",
 			"<cmd>Neogit<cr>",
 			desc = "Neogit",
 		},

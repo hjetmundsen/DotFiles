@@ -10,7 +10,6 @@ return {
 		gitbrowse = { enabled = true },
 		indent = { enabled = true },
 		input = { enabled = true },
-		lazygit = { enabled = true },
 		picker = { enabled = true },
 		notifier = { enabled = true },
 		quickfile = { enabled = true },
@@ -68,13 +67,6 @@ return {
 				Snacks.bufdelete()
 			end,
 			desc = "Delete active buffer",
-		},
-		{
-			"<leader>lg",
-			function()
-				Snacks.lazygit()
-			end,
-			desc = "Open Lazygit in floating window",
 		},
 	},
 }
