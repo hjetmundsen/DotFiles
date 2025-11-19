@@ -26,8 +26,9 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
-vim.opt.foldenable = false
-vim.opt.foldlevel = 20
+vim.opt.foldenable = true
+vim.opt.foldmethod = "expr"
+-- vim.opt.foldlevel = 20
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","

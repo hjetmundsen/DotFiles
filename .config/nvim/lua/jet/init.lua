@@ -76,15 +76,18 @@ autocmd("FileType", {
 	group = JetGroup,
 	pattern = {
 		"bash",
+		"css",
 		"dockerfile",
 		"git_config",
 		"git_rebase",
 		"gitcommit",
 		"gitignore",
 		"go",
+		"html",
 		"java",
 		"javascript",
 		"json",
+		"jsx",
 		"kotlin",
 		"lua",
 		"make",
@@ -95,6 +98,7 @@ autocmd("FileType", {
 		"terraform",
 		"toml",
 		"typescript",
+		"typescriptreact",
 		"yaml",
 	},
 	callback = function()
@@ -102,6 +106,24 @@ autocmd("FileType", {
 		vim.treesitter.foldexpr()
 	end,
 })
+
+-- Function to show/hide bufferline depending on number of tabs
+local function update_bufferline_visibility()
+	local tab_count = vim.fn.tabpagenr("$")
+	if tab_count > 1 then
+		vim.o.showtabline = 2 -- always show
+	else
+		vim.o.showtabline = 0 -- never show
+	end
+end
+
+-- Set up autocommands to check on tab changes
+autocmd({ "TabNew", "TabClosed", "TabEnter", "TabLeave" }, {
+	group = JetGroup,
+	callback = update_bufferline_visibility,
+})
+
+update_bufferline_visibility()
 
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0

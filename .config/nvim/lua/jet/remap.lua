@@ -57,3 +57,6 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- open neovim config
 vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.config/nvim/lua/jet/lazy.lua<CR>")
+
+-- oil
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
