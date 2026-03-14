@@ -24,11 +24,11 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
-vim.opt.updatetime = 50
+vim.opt.updatetime = 200
 
 vim.opt.foldenable = true
 vim.opt.foldmethod = "expr"
--- vim.opt.foldlevel = 20
+vim.opt.foldlevel = 99
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","

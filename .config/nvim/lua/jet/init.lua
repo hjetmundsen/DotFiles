@@ -32,13 +32,13 @@ autocmd("TextYankPost", {
 autocmd("BufWritePre", {
 	group = JetGroup,
 	pattern = "*",
-	command = [[%s/\s\+$//e]],
-})
-
-autocmd({ "BufReadPost", "FileReadPost" }, {
-	group = JetGroup,
-	pattern = "*",
-	command = "normal! zR",
+	callback = function()
+		local ok, conform = pcall(require, "conform")
+		if ok and #conform.list_formatters(0) > 0 then
+			return
+		end
+		vim.cmd([[%s/\s\+$//e]])
+	end,
 })
 
 autocmd("LspAttach", {
@@ -103,7 +103,7 @@ autocmd("FileType", {
 	},
 	callback = function()
 		vim.treesitter.start()
-		vim.treesitter.foldexpr()
+		vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 	end,
 })
 
