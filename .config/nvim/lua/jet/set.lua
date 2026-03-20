@@ -32,3 +32,7 @@ vim.opt.foldlevel = 99
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
+
+-- Disable netrw (using oil.nvim as file explorer)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1

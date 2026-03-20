@@ -1,7 +1,7 @@
 return {
 	"ibhagwan/fzf-lua",
-	dependencies = { "nvim-mini/mini.icons" },
-	lazy = false,
+	dependencies = { "echasnovski/mini.icons" },
+	cmd = { "FzfLua" },
 	keys = {
 		{
 			"<leader>ff",

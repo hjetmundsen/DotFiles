@@ -1,33 +1,15 @@
 return {
 	"akinsho/bufferline.nvim",
 	version = "*",
-	dependencies = "nvim-tree/nvim-web-devicons",
+	dependencies = { "echasnovski/mini.icons" },
 	lazy = false,
 	keys = {
-		{
-			"<leader>bb",
-			"<cmd>BufferLinePick<cr>",
-		},
-		{
-			"<leader>bn",
-			"<cmd>BufferLineCycleNext<cr>",
-		},
-		{
-			"<leader>bp",
-			"<cmd>BufferLineCyclePrev<cr>",
-		},
-		{
-			"<leader>bcl",
-			"<cmd>BufferLineCloseLeft<cr>",
-		},
-		{
-			"<leader>bcr",
-			"<cmd>BufferLineCloseRight<cr>",
-		},
-		{
-			"<leader>bco",
-			"<cmd>BufferLineCloseOthers<cr>",
-		},
+		{ "<leader>bb", "<cmd>BufferLinePick<cr>", desc = "Pick buffer" },
+		{ "<leader>bn", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
+		{ "<leader>bp", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
+		{ "<leader>bcl", "<cmd>BufferLineCloseLeft<cr>", desc = "Close buffers to the left" },
+		{ "<leader>bcr", "<cmd>BufferLineCloseRight<cr>", desc = "Close buffers to the right" },
+		{ "<leader>bco", "<cmd>BufferLineCloseOthers<cr>", desc = "Close other buffers" },
 	},
 	config = function()
 		local bufferline = require("bufferline")

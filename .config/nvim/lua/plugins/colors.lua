@@ -1,4 +1,4 @@
-function ColorMyPencils(color, style)
+local function ColorMyPencils(color, style)
 	color = color or "sonokai"
 
 	if color == "sonokai" then

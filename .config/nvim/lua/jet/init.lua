@@ -8,10 +8,6 @@ local JetGroup = augroup("Jet", {})
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup("HighlightYank", {})
 
--- function R(name)
--- 	require("plenary.reload").reload_module(name)
--- end
-
 vim.filetype.add({
 	extension = {
 		templ = "templ",
@@ -24,7 +20,7 @@ autocmd("TextYankPost", {
 	callback = function()
 		vim.highlight.on_yank({
 			higroup = "IncSearch",
-			timeout = 40,
+			timeout = 200,
 		})
 	end,
 })
@@ -37,70 +33,48 @@ autocmd("BufWritePre", {
 		if ok and #conform.list_formatters(0) > 0 then
 			return
 		end
+		local save = vim.fn.winsaveview()
 		vim.cmd([[%s/\s\+$//e]])
+		vim.fn.winrestview(save)
 	end,
 })
 
 autocmd("LspAttach", {
 	group = JetGroup,
 	callback = function(e)
-		local opts = { buffer = e.buf }
+		local opts = function(desc)
+			return { buffer = e.buf, desc = desc }
+		end
 		vim.keymap.set("n", "gd", function()
 			vim.lsp.buf.definition()
-		end, opts)
+		end, opts("Go to definition"))
 		vim.keymap.set("n", "K", function()
 			vim.lsp.buf.hover()
-		end, opts)
+		end, opts("Hover documentation"))
 		vim.keymap.set("n", "<leader>vws", function()
 			vim.lsp.buf.workspace_symbol()
-		end, opts)
+		end, opts("Workspace symbol"))
 		vim.keymap.set("n", "<leader>vd", function()
 			vim.diagnostic.open_float()
-		end, opts)
+		end, opts("Open diagnostic float"))
 		vim.keymap.set("n", "<leader>vca", function()
 			vim.lsp.buf.code_action()
-		end, opts)
+		end, opts("Code action"))
 		vim.keymap.set("n", "<leader>vrr", function()
 			vim.lsp.buf.references()
-		end, opts)
+		end, opts("Find references"))
 		vim.keymap.set("n", "<leader>vrn", function()
 			vim.lsp.buf.rename()
-		end, opts)
+		end, opts("Rename symbol"))
 		vim.keymap.set("i", "<C-h>", function()
 			vim.lsp.buf.signature_help()
-		end, opts)
+		end, opts("Signature help"))
 	end,
 })
 
 autocmd("FileType", {
 	group = JetGroup,
-	pattern = {
-		"bash",
-		"css",
-		"dockerfile",
-		"git_config",
-		"git_rebase",
-		"gitcommit",
-		"gitignore",
-		"go",
-		"html",
-		"java",
-		"javascript",
-		"json",
-		"jsx",
-		"kotlin",
-		"lua",
-		"make",
-		"markdown",
-		"python",
-		"rust",
-		"sql",
-		"terraform",
-		"toml",
-		"typescript",
-		"typescriptreact",
-		"yaml",
-	},
+	pattern = require("jet.languages").filetypes(),
 	callback = function()
 		vim.treesitter.start()
 		vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
@@ -124,7 +98,3 @@ autocmd({ "TabNew", "TabClosed", "TabEnter", "TabLeave" }, {
 })
 
 update_bufferline_visibility()
-
-vim.g.netrw_browse_split = 0
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 25

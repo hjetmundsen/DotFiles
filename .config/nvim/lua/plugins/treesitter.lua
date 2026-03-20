@@ -5,33 +5,7 @@ return {
 	build = ":TSUpdate",
 	config = function()
 		local ts = require("nvim-treesitter")
-		ts.install({
-			"bash",
-			"css",
-			"dockerfile",
-			"git_config",
-			"git_rebase",
-			"gitcommit",
-			"gitignore",
-			"go",
-			"html",
-			"java",
-			"javascript",
-			"json",
-			"jsx",
-			"kotlin",
-			"lua",
-			"make",
-			"markdown",
-			"python",
-			"rust",
-			"sql",
-			"terraform",
-			"toml",
-			"tsx",
-			"typescript",
-			"yaml",
-		})
+		ts.install(require("jet.languages").parsers())
 		ts.setup({
 			fold = {
 				enable = true,

@@ -3,10 +3,8 @@
 std = {
 	globals = {
 		"vim",
-		"Snacks",
 		"require",
 		"package",
-		"ColorMyPencils",
 		-- "table",
 		-- "string",
 		-- "math",
