@@ -52,13 +52,18 @@ vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Next location ite
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Prev location item" })
 
 -- find and replace word under cursor in entire file
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Find and replace word under cursor" })
+vim.keymap.set(
+	"n",
+	"<leader>s",
+	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+	{ desc = "Find and replace word under cursor" }
+)
 
 -- make the current file executable
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make file executable" })
 
 -- open neovim config
-vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.config/nvim/lua/jet/lazy.lua<CR>", { desc = "Open Neovim config" })
+vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.config/nvim/lua/jet/pack.lua<CR>", { desc = "Open Neovim config" })
 
 -- oil
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })

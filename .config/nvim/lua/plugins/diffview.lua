@@ -1,4 +1,1 @@
-return {
-	"sindrets/diffview.nvim",
-	opts = {},
-}
+require("diffview").setup({})

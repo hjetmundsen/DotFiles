@@ -1,6 +1,6 @@
 require("jet.set")
 require("jet.remap")
-require("jet.lazy")
+require("jet.pack")
 
 local augroup = vim.api.nvim_create_augroup
 local JetGroup = augroup("Jet", {})

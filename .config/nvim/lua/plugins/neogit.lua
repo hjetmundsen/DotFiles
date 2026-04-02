@@ -1,20 +1,5 @@
-return {
-	"NeogitOrg/neogit",
-	dependencies = {
-		"nvim-lua/plenary.nvim", -- required
-		"sindrets/diffview.nvim", -- optional - Diff integration
-	},
-	opts = {},
-	keys = {
-		{
-			"<leader>gs",
-			"<cmd>Neogit<cr>",
-			desc = "Neogit",
-		},
-		{
-			"<leader>gc",
-			"<cmd>Neogit commit<cr>",
-			desc = "Neogit commit",
-		},
-	},
-}
+require("neogit").setup({})
+
+local map = vim.keymap.set
+map("n", "<leader>gs", "<cmd>Neogit<cr>", { desc = "Neogit" })
+map("n", "<leader>gc", "<cmd>Neogit commit<cr>", { desc = "Neogit commit" })

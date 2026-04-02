@@ -1,25 +1,16 @@
-return {
-	"stevearc/conform.nvim",
-	event = { "BufWritePre" },
-	cmd = { "ConformInfo" },
-	---@module "conform"
-	---@type conform.setupOpts
-	opts = {
-		formatters_by_ft = {
-			go = { "gofmt", "goimports" },
-			java = { "google-java-format" },
-			javascript = { "prettier" },
-			kotlin = { "ktlint" },
-			lua = { "stylua" },
-			python = { "ruff" },
-			rust = { "rustfmt" },
-			typescript = { "prettier" },
-		},
-		-- Set default options
-		default_format_opts = {
-			lsp_format = "fallback",
-		},
-		-- Set up format-after-save (async, non-blocking)
-		format_after_save = { lsp_fallback = true },
+require("conform").setup({
+	formatters_by_ft = {
+		go = { "gofmt", "goimports" },
+		java = { "google-java-format" },
+		javascript = { "prettier" },
+		kotlin = { "ktlint" },
+		lua = { "stylua" },
+		python = { "ruff" },
+		rust = { "rustfmt" },
+		typescript = { "prettier" },
 	},
-}
+	default_format_opts = {
+		lsp_format = "fallback",
+	},
+	format_after_save = { lsp_fallback = true },
+})
