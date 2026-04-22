@@ -1,7 +1,7 @@
 require("which-key").setup({
 	spec = {
-		{ "<leader>b", group = "Buffer" },
-		{ "<leader>bc", group = "Buffer close" },
+		{ "<leader>b", group = "Tab" },
+		{ "<leader>bc", group = "Tab close" },
 		{ "<leader>c", group = "Code" },
 		{ "<leader>d", group = "Delete (black hole)" },
 		{ "<leader>f", group = "Find" },

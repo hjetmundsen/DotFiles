@@ -37,7 +37,7 @@ vim.pack.add({
 
 	-- Navigation
 	gh("folke/flash.nvim"),
-	gh("otavioschwanck/arrow.nvim"),
+	{ src = gh("ThePrimeagen/harpoon"), branch = "harpoon2" },
 
 	-- Treesitter
 	gh("nvim-treesitter/nvim-treesitter"),
@@ -52,8 +52,9 @@ vim.pack.add({
 	{ src = gh("saghen/blink.cmp"), version = vim.version.range("1.0") },
 	gh("rafamadriz/friendly-snippets"),
 
-	-- Formatting
+	-- Formatting & Linting
 	gh("stevearc/conform.nvim"),
+	gh("mfussenegger/nvim-lint"),
 
 	-- Git
 	gh("lewis6991/gitsigns.nvim"),
@@ -73,7 +74,7 @@ vim.pack.add({
 	-- Utilities
 	gh("rmagatti/auto-session"),
 	gh("MagicDuck/grug-far.nvim"),
-	gh("jiaoshijie/undotree"),
+	gh("mbbill/undotree"),
 	gh("folke/lazydev.nvim"),
 })
 

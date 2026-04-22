@@ -6,23 +6,11 @@ local augroup = vim.api.nvim_create_augroup
 local JetGroup = augroup("Jet", {})
 
 local autocmd = vim.api.nvim_create_autocmd
-local yank_group = augroup("HighlightYank", {})
 
 vim.filetype.add({
 	extension = {
 		templ = "templ",
 	},
-})
-
-autocmd("TextYankPost", {
-	group = yank_group,
-	pattern = "*",
-	callback = function()
-		vim.highlight.on_yank({
-			higroup = "IncSearch",
-			timeout = 200,
-		})
-	end,
 })
 
 autocmd("BufWritePre", {
@@ -45,12 +33,6 @@ autocmd("LspAttach", {
 		local opts = function(desc)
 			return { buffer = e.buf, desc = desc }
 		end
-		vim.keymap.set("n", "gd", function()
-			vim.lsp.buf.definition()
-		end, opts("Go to definition"))
-		vim.keymap.set("n", "K", function()
-			vim.lsp.buf.hover()
-		end, opts("Hover documentation"))
 		vim.keymap.set("n", "<leader>vws", function()
 			vim.lsp.buf.workspace_symbol()
 		end, opts("Workspace symbol"))
@@ -60,9 +42,6 @@ autocmd("LspAttach", {
 		vim.keymap.set("n", "<leader>vca", function()
 			vim.lsp.buf.code_action()
 		end, opts("Code action"))
-		vim.keymap.set("n", "<leader>vrr", function()
-			vim.lsp.buf.references()
-		end, opts("Find references"))
 		vim.keymap.set("n", "<leader>vrn", function()
 			vim.lsp.buf.rename()
 		end, opts("Rename symbol"))
@@ -77,6 +56,7 @@ autocmd("FileType", {
 	pattern = require("jet.languages").filetypes(),
 	callback = function()
 		vim.treesitter.start()
+		vim.wo.foldmethod = "expr"
 		vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 	end,
 })

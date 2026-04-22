@@ -40,7 +40,7 @@ vim.keymap.set("n", "Q", "<nop>", { desc = "Disable Ex mode" })
 
 -- format buffer
 vim.keymap.set("n", "<leader>cf", function()
-	require("conform").format({ async = true, lsp_fallback = true })
+	require("conform").format({ async = true, lsp_format = "fallback" })
 end, { desc = "Format buffer" })
 
 -- navigate quickfix list
@@ -63,7 +63,7 @@ vim.keymap.set(
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make file executable" })
 
 -- open neovim config
-vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.config/nvim/lua/jet/pack.lua<CR>", { desc = "Open Neovim config" })
+vim.keymap.set("n", "<leader>vpp", "<cmd>e " .. vim.fn.stdpath("config") .. "/lua/jet/pack.lua<CR>", { desc = "Open Neovim config" })
 
 -- oil
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })

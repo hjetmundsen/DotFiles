@@ -17,13 +17,25 @@ require("mason-lspconfig").setup({
 			})
 		end,
 
+		-- TODO: Remove once OTP 28 Dialyzer crash is fixed: https://github.com/erlang/otp/issues/9929
+		["elixirls"] = function()
+			require("lspconfig").elixirls.setup({
+				capabilities = capabilities,
+				settings = {
+					elixirLS = {
+						dialyzerEnabled = false,
+					},
+				},
+			})
+		end,
+
 		["lua_ls"] = function()
 			require("lspconfig").lua_ls.setup({
 				capabilities = capabilities,
 				settings = {
 					Lua = {
 						diagnostics = {
-							globals = { "vim", "it", "describe", "before_each", "after_each" },
+							globals = { "it", "describe", "before_each", "after_each" },
 						},
 					},
 				},

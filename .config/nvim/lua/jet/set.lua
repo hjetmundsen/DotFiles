@@ -18,8 +18,6 @@ vim.opt.undofile = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
-vim.opt.termguicolors = true
-
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
@@ -27,7 +25,6 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 200
 
 vim.opt.foldenable = true
-vim.opt.foldmethod = "expr"
 vim.opt.foldlevel = 99
 
 vim.g.mapleader = " "
