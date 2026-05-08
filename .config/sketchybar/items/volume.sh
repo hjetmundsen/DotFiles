@@ -1,21 +1,10 @@
 #!/usr/bin/env bash
 
-COLOR="$GREEN"
-
-sketchybar \
-	--add item sound right \
-	--set sound \
-	icon.color="$COLOR" \
-	icon.padding_left=10 \
-  icon.font.size=25 \
-	label.color="$COLOR" \
-	label.padding_right=10 \
-	background.height=26 \
-	background.corner_radius="$CORNER_RADIUS" \
-	background.padding_right=5 \
-	background.border_width="$BORDER_WIDTH" \
-	background.border_color="$COLOR" \
-	background.color="$BAR_COLOR" \
-	background.drawing=on \
-	script="$PLUGIN_DIR/sound.sh" \
-	--subscribe sound volume_change
+sketchybar --add item volume right \
+  --set volume \
+    icon.font="JetBrainsMono Nerd Font:Bold:14.0" \
+    icon="$ICON_VOL_2" \
+    label="--%" \
+    click_script="osascript -e 'set volume output muted not (output muted of (get volume settings))'" \
+    script="$PLUGIN_DIR/volume.sh" \
+  --subscribe volume volume_change

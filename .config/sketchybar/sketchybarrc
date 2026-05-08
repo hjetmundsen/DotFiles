@@ -1,57 +1,87 @@
 #!/usr/bin/env bash
+# Cyberpunk (vaporwave) sketchybar — entrypoint
 
-source "$HOME/.config/sketchybar/variables.sh" # Loads all defined colors
+export CONFIG_DIR="$HOME/.config/sketchybar"
+export PLUGIN_DIR="$CONFIG_DIR/plugins"
+export ITEM_DIR="$CONFIG_DIR/items"
 
-# General bar and defaults
+source "$CONFIG_DIR/colors.sh"
+source "$CONFIG_DIR/icons.sh"
 
-sketchybar --bar height=30 \
-	color="$TRANSPARENT" \
-	shadow="$SHADOW" \
-	position=top \
-	sticky=on \
-	padding_right=0 \
-	padding_left=0 \
-	corner_radius="$CORNER_RADIUS" \
-	y_offset=5 \
-	margin=20 \
-	blur_radius=20 \
-	notch_width=200 \
-	--default updates=when_shown \
-	icon.font="$FONT:Bold:13.5" \
-	icon.color="$ICON_COLOR" \
-	icon.padding_left="$PADDINGS" \
-	icon.padding_right="$PADDINGS" \
-	label.font="$FONT:Bold:13.0" \
-	label.color="$LABEL_COLOR" \
-	label.padding_left="$PADDINGS" \
-	label.padding_right="$PADDINGS" \
-	background.padding_right="$PADDINGS" \
-	background.padding_left="$PADDINGS" \
-	popup.background.border_width=1 \
-	popup.background.corner_radius=11 \
-	popup.background.border_color="$POPUP_BORDER_COLOR" \
-	popup.background.color="$POPUP_BACKGROUND_COLOR" \
-	popup.background.shadow.drawing="$SHADOW"
+# ============================================================================
+# Bar
+# ============================================================================
+sketchybar --bar \
+  height=37 \
+  position=top \
+  sticky=on \
+  padding_left=15 \
+  padding_right=15 \
+  color=$BG_TRANSPARENT \
+  border_width=0 \
+  notch_width=200 \
+  shadow=off \
+  font_smoothing=on \
+  y_offset=0
 
-# Left
-# source "$ITEM_DIR/apple.sh"
-source "$ITEM_DIR/spaces.sh"
-source "$ITEM_DIR/front_app.sh"
+# ============================================================================
+# Defaults
+# ============================================================================
+sketchybar --default \
+  icon.font="JetBrains Mono:Bold:13.0" \
+  icon.color=$FG \
+  label.font="JetBrains Mono:Semibold:13.0" \
+  label.color=$FG \
+  background.color=$BG_TRANSPARENT \
+  background.corner_radius=6 \
+  background.height=24 \
+  padding_left=4 \
+  padding_right=4 \
+  label.padding_left=4 \
+  label.padding_right=4 \
+  icon.padding_left=4 \
+  icon.padding_right=4
 
-# Center (of notch)
-source "$ITEM_DIR/spotify.sh"
+# ============================================================================
+# Custom events (must be registered before items subscribe to them)
+# ============================================================================
+sketchybar --add event aerospace_workspace_change
 
-# Right
-source "$ITEM_DIR/clock.sh"
-source "$ITEM_DIR/calendar.sh"
-source "$ITEM_DIR/battery.sh"
-source "$ITEM_DIR/volume.sh"
-source "$ITEM_DIR/cpu.sh"
+# ============================================================================
+# Items
+# ============================================================================
+shopt -s nullglob
+for item_file in "$ITEM_DIR"/*.sh; do
+  source "$item_file"
+done
+shopt -u nullglob
 
-#################### Finalizing Setup ####################
+# ============================================================================
+# Bracket: workspaces panel grouping left-side items
+# ============================================================================
+sketchybar --add bracket workspaces \
+  space.1 space.2 space.3 space.4 space.5 space.6 space.7 space.8 space.9 \
+  space.A space.B space.C space.D space.E space.F space.G space.I \
+  space.M space.N space.O space.P space.Q space.R space.S space.T \
+  space.U space.V space.W space.X space.Y space.Z \
+  front_app \
+  --set workspaces \
+    background.color=$BG_PANEL \
+    background.corner_radius=8 \
+    background.border_color=$BORDER \
+    background.border_width=1 \
+    background.height=28
 
-sketchybar --hotload true
+# ============================================================================
+# Bracket: status panel grouping right-side items
+# ============================================================================
+sketchybar --add bracket status \
+  media cpu battery wifi volume clock \
+  --set status \
+    background.color=$BG_PANEL \
+    background.corner_radius=8 \
+    background.border_color=$BORDER \
+    background.border_width=1 \
+    background.height=28
 
 sketchybar --update
-
-echo "sketchybar configuration loaded.."

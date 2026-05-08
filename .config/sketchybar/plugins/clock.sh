@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+set -uo pipefail
 
-LABEL=$(date '+%H:%M:%S')
-sketchybar --set "$NAME" label="$LABEL"
+source "$CONFIG_DIR/colors.sh"
+
+sketchybar --set clock label="$(date '+%a %-d %b  %H:%M')"
