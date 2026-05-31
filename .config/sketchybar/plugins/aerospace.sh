@@ -1,74 +1,68 @@
 #!/usr/bin/env bash
+# Single-shot, batched workspace refresh.
+#
+# This script is invoked ONCE per workspace-change event (not per item).
+# It queries aerospace exactly once, then emits a single `sketchybar` call
+# containing one `--set` per workspace. That replaces the previous fan-out
+# model where 34 parallel bash processes each shelled out to aerospace and
+# made an independent IPC call to sketchybar — the dominant source of lag
+# when switching workspaces quickly.
+#
+# Bound to a hidden controller item (see items/aerospace.sh) that subscribes
+# to `aerospace_workspace_change`.
+
 set -uo pipefail
 
 source "$CONFIG_DIR/colors.sh"
 
-# $NAME is "space.<workspace>" e.g. "space.1", "space.A"
-WORKSPACE="${NAME#space.}"
+# Must match the list in items/aerospace.sh
+WORKSPACES=(1 2 3 4 5 6 7 8 9 A B C D E F G I M N O P Q R S T U V W X Y Z)
 
-# Cache the focused-workspace and non-empty-workspace lists for the duration
-# of an event burst. Per-item invocations (sketchybar fans out one process
-# per item x event) reuse the cache instead of re-shelling out to aerospace.
-# Cache TTL is short (1 second) so it self-invalidates between distinct events.
-CACHE_DIR="${TMPDIR:-/tmp}/sketchybar-aerospace"
-mkdir -p "$CACHE_DIR" 2>/dev/null
-
-cache_get() {
-  local key="$1"
-  local cmd="$2"
-  local file="$CACHE_DIR/$key"
-  if [ -f "$file" ] && [ "$(($(date +%s) - $(stat -f %m "$file" 2>/dev/null || echo 0)))" -lt 1 ]; then
-    cat "$file"
-  else
-    local val
-    val="$(eval "$cmd" 2>/dev/null)"
-    printf '%s' "$val" > "$file"
-    printf '%s' "$val"
-  fi
-}
-
-# Determine focused workspace.
-# On `aerospace_workspace_change` the trigger sets $FOCUSED_WORKSPACE — fast path.
-# On other senders ($space_windows_change, etc.) we always re-query aerospace
-# directly (no cache) so a stale cached value can't strand the highlight.
+# Focused workspace: prefer the value passed via `--trigger ... FOCUSED_WORKSPACE=X`
+# (set by aerospace's exec-on-workspace-change hook). Fall back to a query if
+# this script was invoked from a different sender.
 if [ -n "${FOCUSED_WORKSPACE:-}" ]; then
   focused="$FOCUSED_WORKSPACE"
 else
   focused="$(aerospace list-workspaces --focused 2>/dev/null)"
 fi
 
-# Workspaces that have at least one window on ANY monitor. Using
-# `--monitor all` (not `--all`, which conflicts with `--empty no`) so
-# multi-monitor setups don't lose visibility of workspaces on the other display.
-# This list is cached briefly to dedupe the per-item fan-out.
-non_empty="$(cache_get non_empty 'aerospace list-workspaces --monitor all --empty no')"
+# Non-empty workspaces across all monitors. One shell-out, reused for all items.
+non_empty="$(aerospace list-workspaces --monitor all --empty no 2>/dev/null)"
 
-has_windows=false
-if [ -n "$non_empty" ]; then
-  while IFS= read -r ws; do
-    [ "$ws" = "$WORKSPACE" ] && has_windows=true
-  done <<< "$non_empty"
-fi
+# Build a lookup set for O(1) membership tests.
+declare -A HAS_WIN=()
+while IFS= read -r ws; do
+  [ -n "$ws" ] && HAS_WIN["$ws"]=1
+done <<< "$non_empty"
 
-# Drawing rule: visible if focused or non-empty.
-if [ "$WORKSPACE" = "$focused" ] || [ "$has_windows" = true ]; then
-  drawing=on
-else
-  drawing=off
-fi
+# Accumulate one big argv for sketchybar so the bar receives a single
+# message and re-renders once instead of 34 times.
+args=()
+for ws in "${WORKSPACES[@]}"; do
+  name="space.$ws"
 
-# Style based on focus.
-if [ "$WORKSPACE" = "$focused" ]; then
-  sketchybar --set "$NAME" \
-    drawing=$drawing \
-    label.color=$PINK \
-    background.color=$BG_HL \
-    background.border_color=$PINK \
-    background.border_width=2
-else
-  sketchybar --set "$NAME" \
-    drawing=$drawing \
-    label.color=$FG_DIM \
-    background.color=$BG_TRANSPARENT \
-    background.border_width=0
-fi
+  # Drawing rule: visible if focused or non-empty.
+  if [ "$ws" = "$focused" ] || [ -n "${HAS_WIN[$ws]:-}" ]; then
+    drawing=on
+  else
+    drawing=off
+  fi
+
+  if [ "$ws" = "$focused" ]; then
+    args+=(--set "$name"
+      drawing=$drawing
+      label.color=$PINK
+      background.color=$BG_HL
+      background.border_color=$PINK
+      background.border_width=2)
+  else
+    args+=(--set "$name"
+      drawing=$drawing
+      label.color=$FG_DIM
+      background.color=$BG_TRANSPARENT
+      background.border_width=0)
+  fi
+done
+
+sketchybar "${args[@]}"
