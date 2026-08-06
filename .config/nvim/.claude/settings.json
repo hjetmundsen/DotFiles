@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(go env *)",
+      "Bash(twg bitbucket pull-requests effective-default-reviewer *)",
+      "Bash(javap *)",
+      "Bash(twg help *)",
+      "Bash(mise which *)",
+      "Bash(stylua --check *)"
+    ]
+  }
+}

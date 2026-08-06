@@ -37,15 +37,28 @@ vim.pack.add({
 
 	-- Navigation
 	gh("folke/flash.nvim"),
-	{ src = gh("ThePrimeagen/harpoon"), branch = "harpoon2" },
+	{ src = gh("ThePrimeagen/harpoon"), version = "harpoon2" },
 
 	-- Treesitter
+	-- nvim-treesitter (main) ships only highlights/indents/folds/injections queries.
+	-- The `textobjects` queries that mini.ai's treesitter specs resolve against live
+	-- in the textobjects plugin; without it `af`/`ac`/`ao`/`aa` silently do nothing.
 	gh("nvim-treesitter/nvim-treesitter"),
+	gh("nvim-treesitter/nvim-treesitter-textobjects"),
+	gh("nvim-treesitter/nvim-treesitter-context"),
+
+	-- Debugging
+	gh("mfussenegger/nvim-dap"),
+	gh("nvim-neotest/nvim-nio"), -- required by nvim-dap-ui
+	gh("rcarriga/nvim-dap-ui"),
+	gh("leoluz/nvim-dap-go"),
+	gh("mfussenegger/nvim-dap-python"),
 
 	-- LSP
 	gh("neovim/nvim-lspconfig"),
 	gh("williamboman/mason.nvim"),
 	gh("williamboman/mason-lspconfig.nvim"),
+	gh("WhoIsSethDaniel/mason-tool-installer.nvim"),
 	gh("j-hui/fidget.nvim"),
 
 	-- Completion
@@ -90,7 +103,14 @@ local plugins_dir = vim.fn.stdpath("config") .. "/lua/plugins"
 local files = vim.fn.glob(plugins_dir .. "/*.lua", false, true)
 table.sort(files)
 
+-- Each config is isolated: without pcall a single failing plugin aborts this loop
+-- and every module that loads after it, including the autocmds in lua/jet/init.lua.
 for _, file in ipairs(files) do
 	local name = vim.fn.fnamemodify(file, ":t:r")
-	require("plugins." .. name)
+	local ok, err = pcall(require, "plugins." .. name)
+	if not ok then
+		vim.schedule(function()
+			vim.notify(("plugins.%s failed to load:\n%s"):format(name, err), vim.log.levels.ERROR)
+		end)
+	end
 end

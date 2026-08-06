@@ -20,9 +20,7 @@ vim.keymap.set("n", "N", "Nzzzv", { desc = "Prev search result (centered)" })
 -- restart lsp
 vim.keymap.set("n", "<leader>zig", "<cmd>LspRestart<cr>", { desc = "Restart LSP" })
 
--- tabs
-vim.keymap.set("n", "<leader>tn", "<cmd>tabn<cr>", { desc = "Next tab" })
-vim.keymap.set("n", "<leader>tp", "<cmd>tabp<cr>", { desc = "Previous tab" })
+-- tabs (next/prev and the close-others variants live in plugins/bufferline.lua)
 vim.keymap.set("n", "<leader>tc", "<cmd>tabc<cr>", { desc = "Close tab" })
 
 -- replace text with unnamed register without modifying contents of unnamed register
@@ -44,8 +42,10 @@ vim.keymap.set("n", "<leader>cf", function()
 end, { desc = "Format buffer" })
 
 -- navigate quickfix list
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "Next quickfix item" })
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz", { desc = "Prev quickfix item" })
+-- On ]q/[q rather than <C-k>/<C-j>: <C-k> is signature help, and the bracket
+-- pairs match ]c/[c (hunks), ]t/[t (todo), ]x/[x (trouble), ]d/[d (diagnostics).
+vim.keymap.set("n", "]q", "<cmd>cnext<CR>zz", { desc = "Next quickfix item" })
+vim.keymap.set("n", "[q", "<cmd>cprev<CR>zz", { desc = "Prev quickfix item" })
 
 -- navigate location list
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Next location item" })
@@ -60,7 +60,8 @@ vim.keymap.set(
 )
 
 -- make the current file executable
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make file executable" })
+-- (on <leader>cx, not <leader>x: trouble.nvim owns the <leader>x prefix)
+vim.keymap.set("n", "<leader>cx", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make file executable" })
 
 -- open neovim config
 vim.keymap.set(
