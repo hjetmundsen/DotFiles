@@ -28,13 +28,23 @@ else
 fi
 
 # Non-empty workspaces across all monitors. One shell-out, reused for all items.
-non_empty="$(aerospace list-workspaces --monitor all --empty no 2>/dev/null)"
+# Padded with newlines so membership checks below can match a whole line
+# without pulling in grep -x/-F portability quirks.
+non_empty=$'\n'"$(aerospace list-workspaces --monitor all --empty no 2>/dev/null)"$'\n'
 
-# Build a lookup set for O(1) membership tests.
-declare -A HAS_WIN=()
-while IFS= read -r ws; do
-  [ -n "$ws" ] && HAS_WIN["$ws"]=1
-done <<< "$non_empty"
+# NOTE: no associative array here (no `declare -A`). macOS ships bash 3.2
+# as /bin/bash (last GPLv2 release; Apple never shipped 4.0+), and this
+# machine has no newer bash on PATH either — `declare -A` silently fails
+# there, and later indexing a letter workspace crashes with "unbound
+# variable" under `set -u`, aborting the script before it ever reaches
+# the final `sketchybar` call below. Plain substring matching keeps this
+# working on whatever bash actually runs it.
+has_window() {
+  case "$non_empty" in
+    *$'\n'"$1"$'\n'*) return 0 ;;
+    *) return 1 ;;
+  esac
+}
 
 # Accumulate one big argv for sketchybar so the bar receives a single
 # message and re-renders once instead of 34 times.
@@ -43,7 +53,7 @@ for ws in "${WORKSPACES[@]}"; do
   name="space.$ws"
 
   # Drawing rule: visible if focused or non-empty.
-  if [ "$ws" = "$focused" ] || [ -n "${HAS_WIN[$ws]:-}" ]; then
+  if [ "$ws" = "$focused" ] || has_window "$ws"; then
     drawing=on
   else
     drawing=off

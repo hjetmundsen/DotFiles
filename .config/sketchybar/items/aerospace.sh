@@ -13,6 +13,7 @@ WORKSPACES=(1 2 3 4 5 6 7 8 9 A B C D E F G I M N O P Q R S T U V W X Y Z)
 for ws in "${WORKSPACES[@]}"; do
   sketchybar --add item space.$ws left \
     --set space.$ws \
+      drawing=off \
       label="$ws" \
       label.font="JetBrains Mono:Bold:13.0" \
       label.color=$FG_DIM \
