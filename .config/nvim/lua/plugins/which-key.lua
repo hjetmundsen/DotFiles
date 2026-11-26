@@ -4,7 +4,6 @@ require("which-key").setup({
 		{ "<leader>f", group = "Find" },
 		{ "<leader>q", group = "Session" },
 		{ "<leader>g", group = "Git" },
-		{ "<leader>r", group = "Rovo Dev" },
 		{ "<leader>t", group = "Tabs" },
 		{ "<leader>to", group = "Tab close others" },
 		{ "<leader>v", group = "LSP" },

@@ -29,10 +29,9 @@ Personal Neovim configuration for user "jet", targeting Neovim 0.12+ (uses built
 - **Float borders**: set globally via `winborder`, not per-plugin. Anything creating a float without an explicit border inherits it, including `vim.diagnostic` floats and LSP hover.
 - **Colorscheme**: sonokai (shusia variant), transparent background via `g:sonokai_transparent_background` plus `g:sonokai_float_style = "blend"` (needed for transparent floats — the default `"dim"` gives them a backdrop).
 - **Tabs**: bufferline runs in `mode = "tabs"` and owns `showtabline` via `always_show_bufferline = false`. All tab keys share the `<leader>t` prefix.
-- **Keymaps**: leader groups are `c` Code, `f` Find, `g` Git, `q` Session, `r` Rovo Dev, `t` Tabs, `v` LSP, `x` Diagnostics; `gs` is surround. Declare new groups in `lua/plugins/which-key.lua`.
+- **Keymaps**: leader groups are `c` Code, `f` Find, `g` Git, `q` Session, `t` Tabs, `v` LSP, `x` Diagnostics; `gs` is surround. Declare new groups in `lua/plugins/which-key.lua`.
   Bracket pairs are the convention for list/hunk navigation: `]c`/`[c` hunks, `]q`/`[q` quickfix, `]t`/`[t` todo, `]x`/`[x` trouble, `]d`/`[d` diagnostics (built-in), `[C` treesitter context. `<C-k>` is signature help in normal *and* insert mode — which is why quickfix nav is not on `<C-k>`/`<C-j>`.
   Never add a binding under a prefix that is *itself* a complete mapping — e.g. `<leader>s` (replace word under cursor) and `s` (flash) are complete, so `<leader>s?`/`s?` would make every `<leader>s`/`s` press wait out `timeoutlen` (1000ms). This is why grug-far is on `<leader>F` and chmod is on `<leader>cx`.
-- **Local plugin**: `~/Repos/rovo-dev.nvim/main` is prepended to rtp.
 
 ## Style
 

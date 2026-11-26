@@ -92,11 +92,6 @@ vim.pack.add({
 })
 
 -------------------------------------------------------------------------------
--- Local plugins (not managed by vim.pack)
--------------------------------------------------------------------------------
-vim.opt.rtp:prepend(vim.fn.expand("~/Repos/rovo-dev.nvim/main"))
-
--------------------------------------------------------------------------------
 -- Load plugin configurations from lua/plugins/*.lua
 -------------------------------------------------------------------------------
 local plugins_dir = vim.fn.stdpath("config") .. "/lua/plugins"
